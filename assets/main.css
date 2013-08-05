@@ -1,0 +1,63 @@
+canvas {
+	border: solid 1px;
+	border-radius: 5px;
+	position: absolute;
+}
+
+#bg_clouds {
+	z-index: 1;
+	/*background-image: url(pics/background/Set_of_soft_clouds.png)*/
+}
+
+#bg_mountains {
+	z-index: 2;
+	background-image: url(pics/background/mountain.png);
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+}
+#bouncer {
+	z-index: 3;
+	/*background-image: url(pics/background/Set_of_soft_clouds.png)*/
+}
+#debug {
+	z-index: 4;
+	/*background-image: url(pics/background/Set_of_soft_clouds.png)*/
+}
+#canvasdiv {
+	float: left;
+	position: relative;
+	width: 800px;
+	height: 400px;
+	border: solid black 1px;
+	border-radius: 5px;
+	margin: 10px;	
+	/*z-index: 5;*/
+}
+
+#debugdiv {
+	/*float: left;*/
+	width: 400px;
+	height: 380px;
+	border: solid black 1px;
+	border-radius: 5px;	
+	z-index: 5;
+	overflow: hidden;
+	margin: 10px; 
+	padding: 10px;
+
+}
+#wrapper {
+
+	width: 1400px;
+	height: 420px;
+	/*border: solid green 1px;*/
+	border-radius: 5px;	
+/*	z-index: 5;*/
+	overflow: hidden;
+
+}
+
+
+

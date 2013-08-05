@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://code.createjs.com/createjs-2013.05.14.min.js"></script>
+	<script src="js/lib/Box2dWeb-2.1.a.3.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/main.css">
+</head>
+<body onload="init()">
+	<div id="wrapper">
+		<div id="canvasdiv">
+			<canvas id="bg_clouds" height=400 width=800></canvas>
+			<canvas id='bg_mountains' height=400 width=800></canvas>
+			<canvas id="bouncer" height=400 width=800></canvas>
+			<canvas id="debug" height=400 width=800></canvas>
+		
+		</div>
+		<div id="debugdiv"> 
+			<button type="button" onclick="pauseSky()">Pause sky</button>
+			<button type="button" onclick="pauseToggle()">Pause game</button>
+			<button type="button" onclick="init()">Restart game</button>
+			<div id="gameScore">
+				Game Score is: 0 - 0 
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/src/Static.js"></script>
+	<script type="text/javascript" src="js/src/Player.js"></script>
+	<script type="text/javascript" src="js/src/Ball.js"></script>
+	<script type="text/javascript" src="js/src/Main.js"></script>
+</body>
+</html>
