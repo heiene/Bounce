@@ -23,9 +23,9 @@
 			y = height / 4 / SCALE;
 		}
 
-		fixDef.restitution 	= 0.7;
+		fixDef.restitution 	= 0.8;
 		fixDef.density		= 2;
-		fixDef.friction		= 0.8;
+		fixDef.friction		= 0.3;
 		fixDef.shape		= new b.b2CircleShape( ballRadius / SCALE );
 		
 		bodyDef.type		= b.b2Body.b2_dynamicBody;

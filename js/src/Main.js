@@ -24,18 +24,27 @@ var b = {
 
 */
 var SCALE = 30;
-var world, game, stage, clouds, debug, cloudIMG;
+var world, game, stage, clouds, debug, cloudIMG, birdImg;
+function preInit(){
+			
+			birdImg = new Image();
+			birdImg.src = "assets/pics/bird/bird_small.png";
+			birdImg.onload = init();
 
+	
+}
 
 function init() {
 	console.log('init is called')
+	console.log(birdImg)
 	world = game = stage = debug = null;
 
 	game = {
 		score: [0,0],
 		cloudX1: 0,
 		cloudX2: 800,
-		pauseSky: false
+		pauseSky: false,
+		tickCounter: 0
 	};
 	stage = new createjs.Stage(document.getElementById("bouncer"));
 	debug = document.getElementById("debug");
@@ -85,7 +94,7 @@ function setupPhysics(){
 	
 */
 
-	world 		= new b.b2World(new b.b2Vec2(0,15), true);
+	world 		= new b.b2World(new b.b2Vec2(0,20), true);
 	// world.contactBodies = [];	
 	var listener = new b.b2ContactListener();
 
@@ -141,6 +150,15 @@ function setupPhysics(){
 	stage.addChild(game.player1.view);
 	stage.addChild(game.player2.view);
 
+
+
+	game.bird = new Bird(birdImg);
+	stage.addChild(game.bird)
+	// game.bird.alive = false;
+	if (!game.bird.alive) {
+		setTimeout(spawnBird, 3000)	
+	}
+	
 
 /*
 
@@ -215,6 +233,14 @@ function setupPhysics(){
 
 function tick() {
 
+if(game.bird.alive) {
+	game.bird.tick();
+	console.log("Bird alive!!!!!!!!!!!!!!!!")	
+} 
+
+
+
+game.tickCounter +=1; 
 
 	if(game.contactBodies) {
 		console.log('before check contact', game.contactBodies)
@@ -231,10 +257,13 @@ function tick() {
 		moveClouds();
 	}
 	// world.DrawDebugData();
-	world.Step(1/60,10,10);
+	world.Step(1/60,20,20);
 	world.ClearForces();
 	
-	
+if (game.tickCounter == 60) {
+	console.log("GAMETICKKKER: ",game.tickCounter);
+	game.tickCounter = 0;
+}
 
 };
 
@@ -316,6 +345,14 @@ function drawClouds() {
 function pauseSky() {
 	game.pauseSky = !game.pauseSky;
 }
+
+function spawnBird() {
+	game.bird = new Bird(birdImg);
+	stage.addChild(game.bird)
+	clearTimeout()
+
+}
+
 
 
 

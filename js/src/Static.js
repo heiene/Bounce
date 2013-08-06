@@ -77,13 +77,13 @@
 		this.view.regX 	= regX;
 		this.view.regY	= regY;
 
-		fixDef.restitution 	= 0.5;
+		fixDef.restitution 	= 0.8;
 		fixDef.density		= 2;
-		fixDef.friction		= 0.5;
+		fixDef.friction		= 0.3;
 		bodyDef.type		= b.b2Body.b2_staticBody;
 		fixDef.shape		= new b.b2PolygonShape();
-		console.log("Createda: ", type, "posX: ", posX * SCALE, "posY: ", posY * SCALE, "BoxWidt: ", boxWidth*SCALE, "Boxheigth: ", boxHeight*SCALE)
-		console.log("Bitmap: ", this.view.x, this.view.y)
+		// console.log("Createda: ", type, "posX: ", posX * SCALE, "posY: ", posY * SCALE, "BoxWidt: ", boxWidth*SCALE, "Boxheigth: ", boxHeight*SCALE)
+		// console.log("Bitmap: ", this.view.x, this.view.y)
 		bodyDef.position.x 	= posX
 		bodyDef.position.y 	= posY;
 		bodyDef.userData	= type;

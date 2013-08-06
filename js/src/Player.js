@@ -26,7 +26,7 @@
 			x = (width-offset) / SCALE;
 		};
 
-		fixDef.restitution 	= 0.5;
+		fixDef.restitution 	= 1;
 		fixDef.density		= 10;
 		fixDef.friction		= 0.5;
 		fixDef.shape		= new b.b2CircleShape( playerRadius / SCALE );
