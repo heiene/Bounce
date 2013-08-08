@@ -5,11 +5,11 @@
 
 	};
 
-	var bb = Bird.prototype = new createjs.BitmapAnimation();
+	var bp = Bird.prototype = new createjs.BitmapAnimation();
 
-	bb.BitmapAnimation_initialize = bb.initialize;
+	bp.BitmapAnimation_initialize = bp.initialize;
 
-	bb.initialize = function(img) {
+	bp.initialize = function(img) {
 		
 		var localSpriteSheet = new createjs.SpriteSheet({
             images: [img], //image to use
@@ -40,7 +40,7 @@
 
 	};
 
-	bb.setupPhysics = function () {
+	bp.setupPhysics = function () {
 		var fixDef 	= new b.b2FixtureDef();
 		var bodyDef	= new b.b2BodyDef();
 		var height	= stage.canvas.height;
@@ -99,7 +99,7 @@
 
 	
 
-	bb.tick = function(event) {
+	bp.tick = function(event) {
 		this.x = this.physicsBody.GetPosition().x * SCALE;
 		this.y = this.physicsBody.GetPosition().y * SCALE;
 		this.rotation = this.physicsBody.GetAngle() * (180/Math.PI);
@@ -148,7 +148,7 @@
 
 	};
 
-	bb.kill = function(){
+	bp.kill = function(){
 		world.DestroyBody(this.physicsBody)
 		stage.removeChild(this)
 		this.alive = false;

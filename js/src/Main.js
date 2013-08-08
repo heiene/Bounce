@@ -18,26 +18,34 @@ var b = {
     b2ContactListener: Box2D.Dynamics.b2ContactListener
 };
 
+
+var manifest = [
+	{id:"birdImg",src: "assets/pics/bird/bird_small.png"}
+]
+
+
 /*
 
 	Defining the global variables
 
 */
 var SCALE = 30;
-var world, game, stage, clouds, debug, cloudIMG, birdImg;
+var world, game, stage, clouds, debug, cloudIMG, contentManager;
 function preInit(){
+			world = game = debug = contentManager = stage = null;
+
+			stage = new createjs.Stage(document.getElementById("bouncer"));
 			
-			birdImg = new Image();
-			birdImg.src = "assets/pics/bird/bird_small.png";
-			birdImg.onload = init();
+			contentManager = new ContentManager(stage);
+			contentManager.setDownloadCompleted(init);
+			contentManager.startDownload(manifest)
+
+
 
 	
 }
 
 function init() {
-	console.log('init is called')
-	console.log(birdImg)
-	world = game = stage = debug = null;
 
 	game = {
 		score: [0,0],
@@ -46,7 +54,7 @@ function init() {
 		pauseSky: false,
 		tickCounter: 0
 	};
-	stage = new createjs.Stage(document.getElementById("bouncer"));
+	
 	debug = document.getElementById("debug");
 	console.log("Stage: ",stage)
 	console.log("debug: ",debug)
@@ -56,11 +64,6 @@ function init() {
 	cloudIMG2 = new createjs.Bitmap("assets/pics/background/Set_of_soft_clouds.png")
 	clouds.addChild(cloudIMG1);
 	clouds.addChild(cloudIMG2);
-
-
-
-
-
 
 /*
 
@@ -150,9 +153,9 @@ function setupPhysics(){
 	stage.addChild(game.player1.view);
 	stage.addChild(game.player2.view);
 
+	console.log(contentManager.assets.birdImg.src)
 
-
-	game.bird = new Bird(birdImg);
+	game.bird = new Bird(contentManager.assets.birdImg);
 	stage.addChild(game.bird)
 	// game.bird.alive = false;
 	if (!game.bird.alive) {
